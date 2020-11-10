@@ -1,0 +1,19 @@
+server:
+  port: 9991 # 端口
+
+spring:
+  application:
+    name: uncg-model # 应用名称
+
+# 配置 Eureka Server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true       # 是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} # ip:port
+  client:
+    service-url:                  # 设置服务注册中心地址
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+
+# 自定义配置
+name: uncg-model-prod-v1.0
+password: '{cipher}AQBb95lBLRyMrmByfQ/t8fhUkeJqTDsfMBvYF7mDujqPtydPNEtRRTTGrCmmg/tCkaGP5xEIiKetD6hju6wb57rdCheL4IuO3Nvwl6O0BbqwLpzkWQ7g/pn7Yg8yy1RCtRcJp0gUoW0AtIv6Gm9qEUw6VO0+HXQwC3GIEaBMB+sGfhFTk8DiAT+DFMaAIJdhkqj+lJWzfT4OOTOLC302SSN29aMB1H3ejeT+/180B5dPKaoPXAq+Zv+MYdMfywIFjU9E8EbxNhJH7AVF3J3PgIyAbNKJcfr63b3/tMHxOjqZpyrJhy9E+FfhraCtRnWAxgjxssZTXS1yppyPd8OnI6nVFZZiJq8AOqLHmYRZeja0DD4+OWG5VuWMJ2rU6ahioPE='

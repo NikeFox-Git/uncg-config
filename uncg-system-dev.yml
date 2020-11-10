@@ -1,0 +1,42 @@
+server:
+  port: 9990 # 端口
+
+spring:
+  application:
+    name: uncg-system # 应用名称
+  #数据库连接池
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/db_uncg?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai
+    username: '{cipher}AQBl1a8pv4XhJXY9mucPKovthP8E07JfespEEop2Yl4a29GO4ybenMQgG19szQ4uw4Y551gfbrhUthjXM9NPH2nyoKimrVLrZOks5xRBX8lhHRv4xuOLHEmpgTnxnQUzUQTkStqPbP07M9rZMWVzWI4feP44vQADYCC5x15lbEIVKuMCrbERtVKUM3ftD4Ax3lqGVklO9nRPmFSPOOT5rUMoTagep/b6lacQtHyy6KubszvoXuQqWZCmtZEKdn9Sc1pdU+fiSPsbCwgCVTJ+7Z9fs9LTJEbAL9CCUdTMSUSion6aEnLA0yDyIEghyTFNRganOvSm4nQnT8+fenYEvBjsjlWz1ueokPOVkvdKmawELqSKbZ6rN7ee1gCfwA0axDs='
+    password: '{cipher}AQAQvxgxulehCa78EWu7Ojl5YS8M18NAF7zMhciobqWSJyJj4Jv3WB5b28ENTSnNCoImSrRBjahQQbGhZtwHqZAWsjE24nIlobVeWmXYt+yVh67Cb2G/ln/aoVz+T5oRCfjdthAfXom8pBXY3e7ZpjqtHLnSSLuDCeNJh1uumKqpYVoDeIzaBaGCQZFn0g4j9aWCgT8CFeUWbqaAGYv0Ol9Bc5n8pTMqmnEX9K/8KumS9Oosl9ikSEc2/AC58F5pRNX9MnwoXTULy1jqL2TNt7BMp+jgtLfQMm8nZxmOhGZy8u0T7aJ6l4u7iFndPDrOEd7bxhN2mqo39/N0O4ZBzH3JnTx/qI0VmpdM64cf6m32Cr6APk3LuRjo2NFlJjfTlNM='
+  #jpa配置
+  jpa:
+    database: mysql
+    show-sql: true
+    open-in-view: true
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password: '{cipher}AQA70sEHeRoFiy1iXIhFdo7NshhhsmbIuB3O5P46SJIhH1pzsSy5D17So9IwshqDK3rfA0qfVP5Qv5d27FEjRo/tL7ge4rMYYdctEIsvmJ3a0qN+AwTxyZ9Ym11cveLXnoqQDHU8Yhz/tjzgZXb8M969xJyHtpRbxenEYtQ98bXUjaF5QifDGFVxA8fauitNRWQlOQ2V2QO5cFh80bgYe9bKqQGET0l0Amq0WFEPizZAFQYj9uTzqR0KxQWxqT3xDz1cnz9C5kO1HJOdgRhWUQYe3TH3rdlB882grVo6mBk+kWF782Lx6qa177BFROPgckGaEh4MGZsnTKw+oHnXXpbb7Vhkhx4O0VQ4eS1WroiHnCFoHXXxkVHXBXYDpS9A/s4='
+
+# 配置 Eureka Server 注册中心
+eureka:
+  instance:
+    prefer-ip-address: true       # 是否使用 ip 地址注册
+    instance-id: ${spring.cloud.client.ip-address}:${server.port} # ip:port
+  client:
+    service-url:                  # 设置服务注册中心地址
+      defaultZone: http://localhost:8761/eureka/,http://localhost:8762/eureka/
+oss:
+  endpoint: https://oss-cn-beijing.aliyuncs.com
+  region: oss-cn-beijing
+  accessKeyId: '{cipher}AQByFP/02Q1iOmB2iPD0p1Cv+ACwJfScl2UXiFmD7F0E+tjW9aeRGSEoEtyz/wBrAeurn+uBY7EZH1olsn6hJUzkeDQMYowzuRGZW3D7Vc6ONIQY3eLXV01pVwtPTfawxjicG8efcwW83MSpC7+rzzZ46Q53asw0Ta8vTmfKSsotOlpFpSzIXrgRkerLEk6I14NSLua/nl0K5iyu7YCvYViv9Jo+Z8YjBhmGPPCGZ2VTCFaVeS+1BVq+NRQj6Bh2DB4gyRTEWrC3kl7ANRRqzuhpYuZ2eiwZyCfi8s0HdtFYmJ+t/r+MgCmgTRZD3yj4L5s3ZCvAfjo7ylALJU2/QiHkeOokoihZ19jolrNEVgrpgN3lOK6s+MQr7aR4q+o8IFOIU7lahhZE+mhnavdYyd/d'
+  secretAccessKey: '{cipher}AQALwOsFjElpWn3x+WWlgqPO15CcqIvC+yc8XBEahqeqZTPhiztcVbpI21w19YV4S557tg2NaxUPnbxDgppZMHh64SPjahv0vXR3uCZm/57DG06AHC65mDdgumQdc5UrAA32ThGQAQ34PAY05ntG7NMgDJXXnZCurgtsaW9pzX1vKmc8MyIRF+P5CZaVg/Wj0Dc7nKKDyMQVPMsYi44C9Vkr62eSBmL2wPWQ5hhn1oO+jBekRVtQtsPhmk0t6AFKxHqzjIbJjL2cjatmaTpGNvxsALCnCYVPa9LhYwqe6EKMmC1LQUgzoMA5u7yge0/SY0Qio0VwLEkLiJb5bjS4p8qHn5UhYq1XVCIdvKjFrq+w/DY5sjBvtT4UhFvXeyXt6zfTFJtp9LBiWrbytRJkZqBr'
+  bucketName: uncg
+  urlPrefix: https://uncg.oss-cn-beijing.aliyuncs.com
+
+# 自定义配置
+name: uncg-system-dev-v1.0
+password: '{cipher}AQBb95lBLRyMrmByfQ/t8fhUkeJqTDsfMBvYF7mDujqPtydPNEtRRTTGrCmmg/tCkaGP5xEIiKetD6hju6wb57rdCheL4IuO3Nvwl6O0BbqwLpzkWQ7g/pn7Yg8yy1RCtRcJp0gUoW0AtIv6Gm9qEUw6VO0+HXQwC3GIEaBMB+sGfhFTk8DiAT+DFMaAIJdhkqj+lJWzfT4OOTOLC302SSN29aMB1H3ejeT+/180B5dPKaoPXAq+Zv+MYdMfywIFjU9E8EbxNhJH7AVF3J3PgIyAbNKJcfr63b3/tMHxOjqZpyrJhy9E+FfhraCtRnWAxgjxssZTXS1yppyPd8OnI6nVFZZiJq8AOqLHmYRZeja0DD4+OWG5VuWMJ2rU6ahioPE='
